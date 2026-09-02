@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17352a">
+<meta name="description" content="ITINERA — season-aware travel planning across India.">
+<title>ITINERA — India, your way</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-season="monsoon">
+<div id="atmosphere" aria-hidden="true"></div>
+<button class="atmo-btn" id="atmoBtn">☔ <span>Atmosphere ON</span></button>
+
+<header class="site-header">
+  <a class="logo" href="#top"><span>IT</span><strong>ITINERA</strong></a>
+  <nav class="desktop-nav">
+    <a href="#discover">Discover</a><a href="#planner">Planner</a><a href="#india">India</a><a href="#stories">Stories</a>
+  </nav>
+  <div class="header-tools">
+    <button class="round" id="themeBtn" aria-label="Toggle dark mode">☾</button>
+    <button class="round mobile-only" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+  <div class="hero-text">
+    <p class="eyebrow" id="seasonEyebrow">SEPTEMBER · MONSOON TAIL · INDIA</p>
+    <h1>Go where<br>the <i>season feels<br>right.</i></h1>
+    <p class="lede">ITINERA builds practical India journeys around the month you travel, your budget, your pace and the places you actually want to see.</p>
+    <div class="hero-actions">
+      <button class="primary" onclick="scrollToId('discover')">Start exploring <span>→</span></button>
+      <button class="secondary" onclick="surpriseMe()">Surprise me ↗</button>
+    </div>
+    <div class="hero-facts"><span><b>₹1.5k</b>starting guide</span><span><b>1–7</b>days</span><span><b>36</b>regions</span></div>
+  </div>
+  <div class="hero-media">
+    <div class="hero-shot">
+      <div class="glass">
+        <small>THE SEPTEMBER EDIT</small>
+        <h2 id="heroTitle">TRAVEL<br>SLOWLY</h2>
+        <p id="heroBlurb">Lush valleys, mountain roads, waterfalls and post-rain quiet.</p>
+        <span id="heroChip">✦ monsoon mode</span>
+      </div>
+      <small class="photo-label">PHOTO · DEMO ASSET</small>
+    </div>
+    <div class="season-banner">
+      <div><small id="bannerSmall">THIS MONTH IN INDIA</small><strong id="bannerTitle">Green India, after rain</strong></div><span>↗</span>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="discover">
+  <div class="section-title"><div><p class="eyebrow">DISCOVER INDIA</p><h2>Build your <i>travel filter.</i></h2><p>Every destination is searchable. Budget, month and vibe change the shortlist instantly.</p></div><span class="status">LIVE</span></div>
+  <div class="controls">
+    <label>MONTH<select id="month"></select></label>
+    <label>TRIP LENGTH<select id="tripDays"><option>1 day</option><option>2 days</option><option>3 days</option><option>4 days</option><option>5 days</option><option>6 days</option><option selected>7 days</option></select></label>
+    <label>VIBE<select id="vibe"><option>Anything</option><option>Nature</option><option>Culture</option><option>Green</option><option>Scenic</option><option>Slow</option></select></label>
+    <label>BUDGET <b id="budgetValue">₹25k</b><input id="budget" type="range" min="1500" max="250000" step="500" value="25000"><span class="range"><small>₹1.5k</small><small>₹2.5L+</small></span></label>
+  </div>
+  <div class="searchbar"><span>⌕</span><input id="search" placeholder="Search any place, city, village or state..."><button id="clearSearch">Clear</button></div>
+  <div class="quick" id="quickFilters"></div>
+
+  <div class="results">
+    <aside class="sidebar">
+      <div class="side-heading"><b>INDIA ATLAS</b><span id="count">0</span></div>
+      <select id="stateFilter"><option value="">All states & UTs</option></select>
+      <div class="check-list">
+        <label><input type="checkbox" id="natureOnly"> Nature</label>
+        <label><input type="checkbox" id="cultureOnly"> Culture</label>
+        <label><input type="checkbox" id="lowOnly"> Under ₹5k</label>
+      </div>
+      <button class="reset" id="resetFilters">Reset filters</button>
+      <div class="side-note"><b>Smart note</b><p id="smartNote">September is a strong green-season month in many regions. Always verify local road and trail conditions.</p></div>
+    </aside>
+    <div class="place-content">
+      <div class="results-head"><div><p class="eyebrow" id="seasonLabel">SEASON EDIT</p><h2>Best places for <i id="monthName">September</i></h2></div><select id="sort"><option value="match">Best match</option><option value="low">Lowest budget</option><option value="rating">Highest rated</option></select></div>
+      <div id="cards" class="cards"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap mini-section" id="india">
+  <div><p class="eyebrow">THE INDIA MAP, WITHOUT THE CLUTTER</p><h2>One country. <i>36 ways in.</i></h2><p>Search across every state and union territory, then open any place to see a starter plan, budget, stay idea, food cue and travel video search.</p></div>
+  <div class="state-cloud" id="stateCloud"></div>
+</section>
+
+<section class="section wrap" id="planner">
+  <div class="planner-copy"><p class="eyebrow">TRIP BUILDER</p><h2>Build a trip in <i>one flow.</i></h2><p>Select a place and let ITINERA lay out your days. The roadmap stays simple: move, eat, explore, rest.</p><div class="builder-stats"><span>🗺️ route</span><span>🛏️ stay</span><span>🍛 food</span><span>▶ video</span></div></div>
+  <div class="planner-card">
+    <div class="planner-top"><strong id="plannerPlace">Choose a place</strong><span id="plannerMeta">7 days · flexible</span></div>
+    <div class="day-tabs" id="dayTabs"></div>
+    <div class="roadmap" id="roadmap"><p>Select a destination to build your roadmap.</p></div>
+    <div class="planner-bottom"><button class="secondary" id="saveBtn">♡ Save trip</button><button class="primary" id="copyBtn">Copy plan →</button></div>
+  </div>
+</section>
+
+<section class="section wrap" id="stories">
+  <p class="eyebrow">WATCH BEFORE YOU GO</p><h2>See the place before you <i>book the mood.</i></h2><p>Open YouTube searches for real trip reports, road conditions and cinematic place guides.</p>
+  <div class="videos">
+    <a target="_blank" href="https://www.youtube.com/results?search_query=India+monsoon+travel" class="video one"><span>▶</span><b>India after rain</b></a>
+    <a target="_blank" href="https://www.youtube.com/results?search_query=Meghalaya+travel" class="video two"><span>▶</span><b>Meghalaya</b></a>
+    <a target="_blank" href="https://www.youtube.com/results?search_query=Kashmir+travel" class="video three"><span>▶</span><b>Kashmir</b></a>
+    <a target="_blank" href="https://www.youtube.com/results?search_query=Kerala+travel" class="video four"><span>▶</span><b>Kerala</b></a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer"><strong>ITINERA</strong><span>India, your way.</span><span>CREATED BY RAHUL MAHTO</span></footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-image" id="modalImage"></div>
+    <div class="modal-body">
+      <p class="eyebrow" id="modalState">STATE</p><h2 id="modalTitle">Place</h2><p id="modalDesc"></p>
+      <div class="modal-grid">
+        <div><small>STARTER BUDGET</small><b id="modalBudget"></b></div><div><small>BEST WINDOW</small><b id="modalBest"></b></div>
+        <div><small>STAY IDEA</small><b id="modalStay"></b></div><div><small>FOOD CUE</small><b id="modalFood"></b></div>
+      </div>
+      <div class="modal-actions"><button class="primary" id="modalPlan">Build roadmap →</button><a class="secondary as-button" id="modalVideo" target="_blank">▶ Watch on YouTube</a><button class="secondary" id="modalSave">♡ Save</button></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script><script src="script.js"></script>
+</body></html>
